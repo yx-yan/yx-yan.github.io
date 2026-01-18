@@ -318,3 +318,52 @@ html[data-theme="dark"] .icon-dark {
     font-size: 2em; /* 手机上欢迎语字体改小 */
   }
 }
+
+
+
+/* =========================================
+   🔍 搜索页面样式 (Search Page)
+   ========================================= */
+
+.search-container {
+  max-width: 700px;
+  margin: 40px auto;
+}
+
+.search-input-wrapper {
+  position: relative;
+  margin-bottom: 50px;
+}
+
+/* 输入框样式 - 极简下划线风格 */
+#search-input {
+  width: 100%;
+  padding: 15px 15px 15px 40px; /* 左边留空给图标 */
+  font-size: 1.5em; /* 大字体 */
+  font-family: var(--heading-font);
+  border: none;
+  border-bottom: 2px solid var(--border-color);
+  background: transparent;
+  color: var(--text-color);
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+#search-input:focus {
+  border-bottom-color: var(--link-color); /* 聚焦时变绿 */
+}
+
+/* 搜索图标 */
+.search-icon {
+  position: absolute;
+  top: 50%;
+  left: 5px;
+  transform: translateY(-50%);
+  font-size: 1.2em;
+  color: var(--text-muted);
+}
+
+/* 搜索结果卡片微调 */
+.search-result-card {
+  padding: 20px 25px; /* 比首页卡片稍微紧凑一点 */
+}
