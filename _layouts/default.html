@@ -1,15 +1,27 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="{{ page.lang | default: site.lang | default: "en" }}" data-theme="light">
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{{ page.title | default: site.title }}</title>
   
-  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <title>{% if page.title %}{{ page.title }} | {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
   
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}?v={{ site.time | date: '%s' }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: true
+      },
+      svg: {
+        fontCache: 'global'
+      }
+    };
+  </script>
   <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 
@@ -25,19 +37,26 @@
 
   <footer class="site-footer">
     <div class="wrapper">
-      <p>© {{ site.time | date: '%Y' }} {{ site.title }}. Powered by Jekyll.</p>
+      <p>
+        © {{ site.time | date: '%Y' }} {{ site.author | default: site.title }}. 
+        <br>Based on <a href="https://lilianweng.github.io/" target="_blank">Lil'Log</a> style. Powered by Jekyll.
+      </p>
     </div>
   </footer>
 
   <script>
     const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
     const currentTheme = localStorage.getItem('theme');
+    // 默认检查系统偏好
+    const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
 
     if (currentTheme) {
         document.documentElement.setAttribute('data-theme', currentTheme);
-        if (currentTheme === 'dark') {
-            toggleSwitch.checked = true;
-        }
+        if (currentTheme === 'dark') { toggleSwitch.checked = true; }
+    } else if (prefersDarkScheme.matches) {
+        // 如果用户没有设置过，且系统是深色，则自动设为深色
+        document.documentElement.setAttribute('data-theme', 'dark');
+        toggleSwitch.checked = true;
     }
 
     function switchTheme(e) {

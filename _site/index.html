@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <title>Home | YXY</title>
+  
+  <link rel="stylesheet" href="/assets/css/style.css?v=1768742053">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: true
+      },
+      svg: {
+        fontCache: 'global'
+      }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+
+  <header class="site-header">
+  <div class="wrapper header-wrapper">
+    <a class="site-title" href="/">YXY</a>
+
+    <nav class="site-nav">
+      <a href="/about">About</a>
+      
+      <div class="social-links" style="display: flex; gap: 15px; margin-left: 10px; margin-right: 10px;">
+        <a href="https://github.com/yourusername" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+        <a href="https://linkedin.com/in/yourusername" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        <a href="https://twitter.com/yourusername" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+        <a href="https://instagram.com/yourusername" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      </div>
+
+      <div class="theme-switch-wrapper">
+        <label class="theme-switch" for="checkbox">
+          <input type="checkbox" id="checkbox" />
+          <div class="slider round"></div>
+        </label>
+      </div>
+    </nav>
+  </div>
+</header>
+
+  <main class="page-content" aria-label="Content">
+    <div class="wrapper">
+      <section class="intro-section">
+  <h1 class="intro-title">👋 Welcome to YXY.</h1>
+  <p class="intro-text">
+    Hi, I am Yuxuanyan. This is my digital garden where I document my learning notes on <b>AI, Data Science, and Prompt Engineering</b>.
+  </p>
+  <p class="intro-text" style="font-size: 0.95em;">
+    Based on the style of this blog, you can tell I am a big fan of Lil'Log 😉.
+  </p>
+</section>
+
+<section class="posts-section">
+  <ul class="post-list">
+    
+      <li>
+        <article class="post-card">
+          <div class="post-meta">
+            January 01, 2024
+          </div>
+          <h2 class="post-card-title">
+            <a href="/ai/prompting/2024/01/01/hello.html">Hello World: The Art of Prompt Engineering</a>
+          </h2>
+          <p class="post-card-excerpt">
+            Introduction Welcome to YXY. This is my first post exploring the intersection of Artificial Intelligence, Data Science, and the subtle art of Prompt Engineering. As large language models (LLMs) continue to evolve, the ability to...
+          </p>
+        </article>
+      </li>
+    
+  </ul>
+</section>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrapper">
+      <p>
+        © 2026 YXY. 
+        <br>Based on <a href="https://lilianweng.github.io/" target="_blank">Lil'Log</a> style. Powered by Jekyll.
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
+    const currentTheme = localStorage.getItem('theme');
+    // 默认检查系统偏好
+    const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
+
+    if (currentTheme) {
+        document.documentElement.setAttribute('data-theme', currentTheme);
+        if (currentTheme === 'dark') { toggleSwitch.checked = true; }
+    } else if (prefersDarkScheme.matches) {
+        // 如果用户没有设置过，且系统是深色，则自动设为深色
+        document.documentElement.setAttribute('data-theme', 'dark');
+        toggleSwitch.checked = true;
+    }
+
+    function switchTheme(e) {
+        if (e.target.checked) {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            localStorage.setItem('theme', 'dark');
+        } else {
+            document.documentElement.setAttribute('data-theme', 'light');
+            localStorage.setItem('theme', 'light');
+        }    
+    }
+    toggleSwitch.addEventListener('change', switchTheme, false);
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2026-01-18T13:14:13+00:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">YXY</title><subtitle>Exploring AI, Prompting, and Data. Personal blog of YXY.</subtitle><entry><title type="html">Hello World: The Art of Prompt Engineering</title><link href="http://localhost:4000/ai/prompting/2024/01/01/hello.html" rel="alternate" type="text/html" title="Hello World: The Art of Prompt Engineering" /><published>2024-01-01T04:00:00+00:00</published><updated>2024-01-01T04:00:00+00:00</updated><id>http://localhost:4000/ai/prompting/2024/01/01/hello</id><content type="html" xml:base="http://localhost:4000/ai/prompting/2024/01/01/hello.html"><![CDATA[<h2 id="introduction">Introduction</h2>
+
+<p>Welcome to <strong>YXY</strong>. This is my first post exploring the intersection of Artificial Intelligence, Data Science, and the subtle art of Prompt Engineering.</p>
+
+<p>As large language models (LLMs) continue to evolve, the ability to communicate effectively with these systems—often called <em>prompt engineering</em>—is becoming a critical skill.</p>
+
+<blockquote>
+  <p>“The hottest new programming language is English.” — Andrej Karpathy</p>
+</blockquote>
+
+<h2 id="the-core-concept-context-is-king">The Core Concept: Context is King</h2>
+
+<p>In the world of AI, context window is the canvas. When we design a prompt, we are essentially shaping the probability distribution of the next token.</p>
+
+<h3 id="the-math-behind-the-magic">The Math Behind the Magic</h3>
+
+<p>To understand how an LLM processes your prompt, we must look at the <strong>Attention Mechanism</strong>. The core calculation can be described using the standard scaled dot-product attention formula:</p>
+
+\[\text{Attention}(Q, K, V) = \text{softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right)V\]
+
+<p>Where:</p>
+<ul>
+  <li>$Q$ represents the <strong>Query</strong> (your prompt).</li>
+  <li>$K$ represents the <strong>Key</strong> (the context/knowledge).</li>
+  <li>$V$ represents the <strong>Value</strong> (the content extraction).</li>
+  <li>$d_k$ is the dimension of the keys (used for scaling).</li>
+</ul>
+
+<p>This mechanism allows the model to “focus” on relevant parts of your input sequence when generating the output.</p>
+
+<h2 id="structured-prompting-example">Structured Prompting Example</h2>
+
+<p>To get better results from models like GPT-4, we often use structured formats (like JSON or Markdown) in our prompts. Here is a Python example of how you might structure a system message:</p>
+
+<p>```python
+import openai</p>
+
+<p>def get_response(user_input):
+    system_prompt = “””
+    You are an expert data scientist.
+    Please answer the user’s question with:
+    1. A brief theoretical explanation.
+    2. A Python code snippet.
+    “””</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>response = openai.ChatCompletion.create(
+    model="gpt-4",
+    messages=[
+        {"role": "system", "content": system_prompt},
+        {"role": "user", "content": user_input}
+    ]
+)
+return response.choices[0].message.content
+</code></pre></div></div>]]></content><author><name></name></author><category term="AI" /><category term="Prompting" /><category term="LLM" /><category term="Data" /><category term="Introduction" /><summary type="html"><![CDATA[A deep dive into the basics of prompt engineering, mathematical foundations of LLMs, and setting up a data-driven mindset.]]></summary></entry></feed>

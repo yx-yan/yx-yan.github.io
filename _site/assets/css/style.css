@@ -1,0 +1,80 @@
+@charset "UTF-8";
+/* 1. 引入 Google Fonts (学术风衬线体 + 现代无衬线体) */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Merriweather:wght@700;900&display=swap");
+/* 2. 定义全局变量 */
+:root { /* 字体栈 */ --heading-font: 'Merriweather', serif; --body-font: 'Inter', -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif; /* 浅色模式色彩 (默认) */ --bg-color: #ffffff; /* 全局背景 */ --text-color: #333333; /* 主要文字 */ --text-muted: #666666; /* 次要文字（日期等） */ --link-color: #2e7d32; /* 链接默认色 (你的绿色) */ --accent-color: #c62828; /* 强调色 (你的红色) */ --nav-bg: rgba(255, 255, 255, 0.9); /* 导航栏半透明背景 */ --card-bg: #f8f9fa; /* 文章卡片背景 (浅灰) */ --border-color: #eaeaea; /* 边框线颜色 */ }
+
+/* 深色模式变量覆盖 */
+[data-theme="dark"] { --bg-color: #121212; /* 更深的黑色背景 */ --text-color: #e0e0e0; /* 浅灰白文字 */ --text-muted: #a0a0a0; --link-color: #81c784; /* 适合深底的浅绿色 */ --nav-bg: rgba(18, 18, 18, 0.9); --card-bg: #1e1e1e; /* 深灰色卡片背景 */ --border-color: #333333; }
+
+/* 3. 全局基础样式 */
+body { background-color: var(--bg-color); color: var(--text-color); font-family: var(--body-font); line-height: 1.7; /* 增加行高，阅读更舒适 */ margin: 0; transition: background-color 0.3s ease, color 0.3s ease; }
+
+/* 标题样式优化 */
+h1, h2, h3, h4, h5, h6, .site-title { font-family: var(--heading-font); font-weight: 700; color: var(--text-color); margin-top: 1.5em; margin-bottom: 0.5em; line-height: 1.3; }
+
+a { color: var(--link-color); text-decoration: none; transition: color 0.2s; }
+
+a:hover { color: var(--accent-color); /* 悬停变红 */ }
+
+/* 布局容器 - 限制最大宽度，居中 */
+.wrapper { max-width: 840px; /* Lil'Log 风格的舒适宽度 */ margin: 0 auto; padding: 0 24px; }
+
+/* 4. 顶部导航栏 (Header) 优化 */
+.site-header { background-color: var(--nav-bg); backdrop-filter: blur(10px); /* 毛玻璃效果 (现代浏览器支持) */ padding: 20px 0; position: sticky; /* 吸顶效果 */ top: 0; z-index: 100; border-bottom: 1px solid var(--border-color); }
+
+.header-wrapper { display: flex; justify-content: space-between; align-items: center; }
+
+.site-title { font-size: 28px; font-weight: 900; /* 最粗的标题强调 */ margin: 0; letter-spacing: -0.5px; }
+
+.site-nav { display: flex; align-items: center; gap: 20px; /* 图标间距 */ }
+
+.site-nav a { color: var(--text-color); font-weight: 600; font-size: 16px; }
+
+.site-nav i { font-size: 20px; transition: transform 0.2s; }
+
+.site-nav a:hover i { transform: translateY(-2px); /* 图标悬停微微上浮 */ color: var(--link-color); /* 图标悬停变绿 */ }
+
+/* 5. 首页：个人简介区域 */
+.intro-section { padding: 60px 0 40px; border-bottom: 1px solid var(--border-color); margin-bottom: 40px; }
+
+.intro-title { font-size: 3em; margin-bottom: 20px; }
+
+.intro-text { font-size: 1.1em; color: var(--text-muted); max-width: 600px; }
+
+/* 6. 首页：文章卡片样式 (重点复刻 Lil'Log) */
+.post-list { list-style: none; padding: 0; margin: 0; }
+
+.post-card { background-color: var(--card-bg); /* 卡片背景色 */ padding: 32px; margin-bottom: 24px; border-radius: 12px; /* 圆角 */ border: 1px solid var(--border-color); transition: transform 0.2s ease, box-shadow 0.2s ease; }
+
+/* 卡片悬停效果 */
+.post-card:hover { transform: translateY(-3px); /* 微微上浮 */ box-shadow: 0 10px 20px -10px rgba(0, 0, 0, 0.1); /* 柔和阴影 */ border-color: var(--link-color); /* 边框变绿 */ }
+
+.post-card-title { margin-top: 0; margin-bottom: 12px; font-size: 1.75em; }
+
+.post-card-title a { color: var(--text-color); background-image: linear-gradient(var(--link-color), var(--link-color)); background-position: 0% 100%; background-repeat: no-repeat; background-size: 0% 2px; /* 默认无下划线 */ transition: background-size .3s; }
+
+/* 标题悬停出现渐变下划线 */
+.post-card:hover .post-card-title a { background-size: 100% 2px; color: var(--link-color); }
+
+.post-card-excerpt { color: var(--text-muted); font-size: 1.05em; margin-bottom: 16px; }
+
+.post-meta { font-size: 0.9em; color: var(--text-muted); font-family: var(--body-font); font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase; }
+
+/* 页脚 */
+.site-footer { padding: 40px 0; margin-top: 60px; border-top: 1px solid var(--border-color); text-align: center; color: var(--text-muted); font-size: 0.9em; }
+
+/* 深色模式开关 (保持不变，样式微调) */
+.theme-switch-wrapper { display: flex; align-items: center; }
+
+.theme-switch { display: inline-block; height: 24px; position: relative; width: 48px; }
+
+.theme-switch input { display: none; }
+
+.slider { background-color: #ccc; bottom: 0; cursor: pointer; left: 0; position: absolute; right: 0; top: 0; transition: .4s; border-radius: 34px; }
+
+.slider:before { background-color: #fff; bottom: 3px; content: ""; height: 18px; left: 3px; position: absolute; transition: .4s; width: 18px; border-radius: 50%; }
+
+input:checked + .slider { background-color: var(--link-color); }
+
+input:checked + .slider:before { transform: translateX(24px); }
