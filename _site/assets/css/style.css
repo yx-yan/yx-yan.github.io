@@ -78,3 +78,22 @@ a:hover { color: var(--accent-color); /* 悬停变红 */ }
 input:checked + .slider { background-color: var(--link-color); }
 
 input:checked + .slider:before { transform: translateX(24px); }
+
+/* ========================================= 深色模式切换开关优化 (带图标) ========================================= */
+/* 1. 容器布局优化 */
+.theme-switch-wrapper { display: flex; align-items: center; gap: 8px; /* 图标与开关之间的间距 */ margin-left: 20px; /* 与社交图标拉开距离 */ }
+
+/* 2. 图标基础样式 */
+.theme-icon { font-size: 16px; color: var(--text-muted); /* 默认颜色为灰色（未激活状态） */ transition: color 0.3s ease, transform 0.3s ease; }
+
+/* 3. 图标激活逻辑 (关键) */
+/* 原理：利用 html 标签上的 data-theme 属性。 当 data-theme="light" 时，激活太阳图标。 当 data-theme="dark" 时，激活月亮图标。
+*/
+/* 浅色模式下：激活太阳 */
+html[data-theme="light"] .icon-light { color: #f59e0b; /* 温暖的橙黄色 */ transform: scale(1.1); /* 微微放大 */ }
+
+/* 深色模式下：激活月亮 */
+html[data-theme="dark"] .icon-dark { color: #f59e0b; /* 温暖的橙黄色 */ transform: scale(1.1); /* 微微放大 */ }
+
+/* 4. 鼠标悬停整个区域时，让未激活的图标也稍微亮一点，增加交互感 */
+.theme-switch-wrapper:hover .theme-icon:not(.icon-light):not(.icon-dark) { color: var(--text-color); }
