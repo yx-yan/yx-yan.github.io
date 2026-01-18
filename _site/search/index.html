@@ -12,7 +12,7 @@
   
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Merriweather:wght@700;900&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="/assets/css/style.css?v=1768750388">
+  <link rel="stylesheet" href="/assets/css/style.css?v=1768750836">
   
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -55,6 +55,25 @@
     <i class="fas fa-search search-icon"></i>
     <input type="text" id="search-input" placeholder="Type to search (e.g. AI, Data, Python)..." />
   </div>
+
+  <div class="tag-cloud">
+    <span class="tag-cloud-title">Explore by Tags</span>
+    <div class="tags-wrapper">
+      
+        <button class="search-tag" onclick="filterByTag('LLM')">
+          LLM <span class="tag-count">1</span>
+        </button>
+      
+        <button class="search-tag" onclick="filterByTag('Data')">
+          Data <span class="tag-count">1</span>
+        </button>
+      
+        <button class="search-tag" onclick="filterByTag('Introduction')">
+          Introduction <span class="tag-count">1</span>
+        </button>
+      
+    </div>
+  </div>
   
   <ul id="results-container" class="post-list"></ul>
 </div>
@@ -79,10 +98,21 @@
         </article>
       </li>
     `,
-    noResultsText: '<li style="text-align:center; color:var(--text-muted);">No posts found. Try another keyword.</li>',
+    noResultsText: '<li style="text-align:center; color:var(--text-muted); margin-top:30px;">No posts found. Try selecting a tag above.</li>',
     limit: 10,
     fuzzy: false
   })
+
+  // 新增：点击标签触发搜索的函数
+  function filterByTag(tagName) {
+    const input = document.getElementById('search-input');
+    // 1. 将标签名填入搜索框
+    input.value = tagName;
+    // 2. 模拟用户输入事件，触发 SimpleJekyllSearch 插件进行搜索
+    input.dispatchEvent(new Event('input', { bubbles: true }));
+    // 3. 页面滚动到结果处 (可选)
+    // document.getElementById('results-container').scrollIntoView({ behavior: 'smooth' });
+  }
 </script>
 
 

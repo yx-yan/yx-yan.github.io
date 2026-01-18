@@ -462,3 +462,72 @@ input:checked + .slider:before { transform: translateX(20px); }
     padding: 20px;
   }
 }
+
+/* =========================================
+   🏷️ 搜索页标签云 (Tag Cloud)
+   ========================================= */
+
+.tag-cloud {
+  margin-bottom: 50px; /* 距离下方结果的间距 */
+  text-align: center;    /* 居中显示 */
+  animation: fadeIn 0.5s ease; /* 加一点淡入动画 */
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.tag-cloud-title {
+  display: block;
+  font-size: 0.85em;
+  color: var(--text-muted);
+  margin-bottom: 20px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+.tags-wrapper {
+  display: flex;
+  flex-wrap: wrap; /* 自动换行 */
+  justify-content: center; /* 居中排列 */
+  gap: 12px; /* 标签之间的间距 */
+}
+
+.search-tag {
+  background-color: var(--card-bg); /* 跟卡片一样的背景色 */
+  border: 1px solid var(--border-color);
+  color: var(--text-color);
+  padding: 8px 18px;
+  border-radius: 50px; /* 完美的圆角胶囊 */
+  font-size: 0.95em;
+  cursor: pointer;
+  font-family: var(--body-font);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); /* 丝滑动画 */
+  
+  /* 去掉默认按钮样式 */
+  outline: none;
+  appearance: none; 
+}
+
+/* 鼠标悬停效果 */
+.search-tag:hover {
+  background-color: var(--link-color); /* 变绿 */
+  color: #fff; /* 文字变白 */
+  border-color: var(--link-color);
+  transform: translateY(-3px); /* 微微上浮 */
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1); /* 投影 */
+}
+
+.tag-count {
+  font-size: 0.8em;
+  margin-left: 6px;
+  opacity: 0.6;
+  vertical-align: text-top;
+}
+
+/* 深色模式下的微调 */
+[data-theme="dark"] .search-tag:hover {
+  color: #121212; /* 深色模式下，背景变亮绿，文字变黑对比度更高 */
+}
