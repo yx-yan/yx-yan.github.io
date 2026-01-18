@@ -1,0 +1,123 @@
+---
+---
+
+/* 定义变量：浅色模式（默认） */
+:root {
+  --bg-color: #ffffff;
+  --text-color: #333333;
+  --heading-font: 'Times New Roman', 'Roboto Slab', serif; /* 衬线体 */
+  --body-font: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; /* 无衬线体 */
+  
+  --accent-green: #2e7d32; /* 主要绿色 */
+  --accent-red: #c62828;   /* 强调红色 */
+  --link-color: var(--accent-green);
+  --nav-bg: #f9f9f9;
+}
+
+/* 深色模式变量 */
+[data-theme="dark"] {
+  --bg-color: #1a1a1a;
+  --text-color: #e0e0e0;
+  --link-color: #81c784; /* 浅绿色，适合深底 */
+  --nav-bg: #252525;
+}
+
+/* 全局样式 */
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: var(--body-font);
+  line-height: 1.6;
+  transition: background-color 0.3s, color 0.3s;
+  margin: 0;
+}
+
+/* 标题样式：衬线体 */
+h1, h2, h3, h4, h5, h6, .site-title {
+  font-family: var(--heading-font);
+  font-weight: 700;
+  color: var(--text-color);
+}
+
+a {
+  color: var(--link-color);
+  text-decoration: none;
+}
+a:hover {
+  color: var(--accent-red); /* 悬停变红 */
+  text-decoration: underline;
+}
+
+/* 布局容器 */
+.wrapper {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* 顶部导航栏 (Flexbox) */
+.site-header {
+  background-color: var(--nav-bg);
+  padding: 20px 0;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+.header-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.site-title {
+  font-size: 24px;
+  letter-spacing: 1px;
+}
+.site-nav a {
+  margin-left: 15px;
+  color: var(--text-color);
+}
+.site-nav i {
+  font-size: 18px; /* 图标大小 */
+}
+
+/* 深色模式开关样式 */
+.theme-switch-wrapper {
+  display: inline-block;
+  margin-left: 15px;
+  vertical-align: middle;
+}
+.theme-switch {
+  display: inline-block;
+  height: 20px;
+  position: relative;
+  width: 40px;
+}
+.theme-switch input {
+  display: none;
+}
+.slider {
+  background-color: #ccc;
+  bottom: 0;
+  cursor: pointer;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transition: .4s;
+  border-radius: 34px;
+}
+.slider:before {
+  background-color: #fff;
+  bottom: 2px;
+  content: "";
+  height: 16px;
+  left: 2px;
+  position: absolute;
+  transition: .4s;
+  width: 16px;
+  border-radius: 50%;
+}
+input:checked + .slider {
+  background-color: var(--accent-green);
+}
+input:checked + .slider:before {
+  transform: translateX(20px);
+}
