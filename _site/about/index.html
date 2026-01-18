@@ -1,10 +1,22 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   
+  <script>
+    (function() {
+      const localTheme = localStorage.getItem('theme');
+      const systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      
+      // 如果本地存了 dark，或者没存但系统是 dark，则立即设置属性
+      if (localTheme === 'dark' || (!localTheme && systemTheme)) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    })();
+  </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
@@ -12,7 +24,7 @@
   
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Merriweather:wght@700;900&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="/assets/css/style.css?v=1768753641">
+  <link rel="stylesheet" href="/assets/css/style.css?v=1768754204">
   
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -112,34 +124,6 @@
   </footer>
 
   <script>
-    const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
-    const currentTheme = localStorage.getItem('theme');
-    const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
-
-    if (currentTheme) {
-        document.documentElement.setAttribute('data-theme', currentTheme);
-        if (currentTheme === 'dark') { toggleSwitch.checked = true; }
-    } else if (prefersDarkScheme.matches) {
-        document.documentElement.setAttribute('data-theme', 'dark');
-        toggleSwitch.checked = true;
-    }
-
-    function switchTheme(e) {
-        if (e.target.checked) {
-            document.documentElement.setAttribute('data-theme', 'dark');
-            localStorage.setItem('theme', 'dark');
-        } else {
-            document.documentElement.setAttribute('data-theme', 'light');
-            localStorage.setItem('theme', 'light');
-        }    
-    }
-    // 确保 toggleSwitch 存在再添加监听，防止报错
-    if (toggleSwitch) {
-        toggleSwitch.addEventListener('change', switchTheme, false);
-    }
-  </script>
-
-  <script>
     window.MathJax = {
       tex: {
         inlineMath: [['$', '$'], ['\\(', '\\)']],
@@ -155,6 +139,30 @@
     };
   </script>
   <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <script>
+    const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
+    
+    // 页面加载完成后，同步开关按钮的状态（如果当前是深色，把开关拨过去）
+    if (document.documentElement.getAttribute('data-theme') === 'dark') {
+        if(toggleSwitch) toggleSwitch.checked = true;
+    }
+
+    // 监听点击事件
+    function switchTheme(e) {
+        if (e.target.checked) {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            localStorage.setItem('theme', 'dark');
+        } else {
+            document.documentElement.setAttribute('data-theme', 'light');
+            localStorage.setItem('theme', 'light');
+        }    
+    }
+    
+    if (toggleSwitch) {
+        toggleSwitch.addEventListener('change', switchTheme, false);
+    }
+  </script>
 
 </body>
 </html>
