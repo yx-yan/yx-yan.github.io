@@ -1,12 +1,12 @@
 ---
 layout: default
-title: Home
+title: Bolg
 ---
 
 <section class="intro-section">
   <h1 class="intro-title">👋 Welcome to YXY.</h1>
   <p class="intro-text">
-    Hi, I am Yuxuanyan. This is my digital garden where I document my learning notes on <b>AI, Data Science, and Prompt Engineering</b>.
+    Hi, I am YuxuanYan. This is my digital garden where I document my learning notes on <b>AI, Data Science, and Prompt Engineering</b>.
   </p>
   <p class="intro-text" style="font-size: 0.95em;">
     Based on the style of this blog, you can tell I am a big fan of Lil'Log 😉.
