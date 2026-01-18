@@ -406,15 +406,25 @@ input:checked + .slider:before { transform: translateX(20px); }
 }
 
 /* 4. 文章正文排版优化 */
-.post-body h2 {
+.post-body h2,
+.post-body h3 {
+  /* 关键修复：点击目录跳转时，预留顶部空间，防止被导航栏遮挡 */
+  scroll-margin-top: 100px; 
+  
   margin-top: 1.5em;
   padding-bottom: 10px;
-  border-bottom: 1px solid var(--border-color); /* 给 H2 加下划线，区分段落 */
+  border-bottom: 1px solid var(--border-color); /* 给 H2 加下划线 */
+}
+
+.post-body h3 {
+  border-bottom: none; /* H3 不需要下划线，区分一下 */
+  margin-top: 1.2em;
 }
 
 .post-body p {
   margin-bottom: 1.5em;
-  font-size: 1.1em; /* 正文字体稍微大一点点，阅读体验更好 */
+  font-size: 1.1em; 
+  line-height: 1.8; /* 稍微增加行高，阅读更舒服 */
 }
 
 /* =========================================
