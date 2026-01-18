@@ -1,6 +1,7 @@
 ---
-layout: post
+layout: default
 ---
+
 <article class="post-content wrapper">
   <header class="post-header">
     <h1 class="post-title">{{ page.title }}</h1>
@@ -29,12 +30,16 @@ layout: post
     const tocContainer = document.getElementById('toc');
     const headers = document.querySelectorAll('.post-body h2, .post-body h3');
     
+    // 只有当存在 H2 或 H3 标题时才生成目录
     if (headers.length > 0) {
       const list = document.createElement('ul');
       headers.forEach(header => {
-        // 为每个标题生成唯一 ID，供跳转使用
+        // 为每个标题生成唯一 ID (如果 Markdown 没生成的话)
         if (!header.id) {
-          header.id = header.textContent.trim().toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]/g, '');
+          header.id = header.textContent.trim().toLowerCase()
+            .replace(/\s+/g, '-')       // 空格转连字符
+            .replace(/[^\w\-]+/g, '')   // 移除特殊字符
+            .replace(/\-\-+/g, '-');    // 避免多个连字符
         }
         
         const li = document.createElement('li');
@@ -49,10 +54,10 @@ layout: post
       });
       tocContainer.appendChild(list);
       
-      // 如果有目录内容，显示容器（CSS里默认可能是隐藏的或者为了样式需要）
+      // 显示目录容器
       document.querySelector('.toc-container').style.display = 'block';
     } else {
-      // 如果没有标题，隐藏目录容器
+      // 没标题就隐藏目录
       document.querySelector('.toc-container').style.display = 'none';
     }
   });
