@@ -1,0 +1,56 @@
+<article class="post-content wrapper">
+  <header class="post-header">
+    <h1 class="post-title">{{ page.title }}</h1>
+    <div class="post-meta">
+      <span class="post-date"><i class="fas fa-calendar-alt"></i> {{ page.date | date: "%B %d, %Y" }}</span>
+      <span class="post-tags">
+        {% for tag in page.tags %}
+          <span class="tag"><i class="fas fa-tag"></i> {{ tag }}</span>
+        {% endfor %}
+      </span>
+    </div>
+  </header>
+
+  <div class="toc-container">
+    <div class="toc-title">Table of Contents</div>
+    <div id="toc"></div>
+  </div>
+
+  <div class="post-body">
+    {{ content }}
+  </div>
+</article>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const tocContainer = document.getElementById('toc');
+    const headers = document.querySelectorAll('.post-body h2, .post-body h3');
+    
+    if (headers.length > 0) {
+      const list = document.createElement('ul');
+      headers.forEach(header => {
+        // 为每个标题生成唯一 ID，供跳转使用
+        if (!header.id) {
+          header.id = header.textContent.trim().toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]/g, '');
+        }
+        
+        const li = document.createElement('li');
+        li.className = 'toc-' + header.tagName.toLowerCase(); // toc-h2 or toc-h3
+        
+        const a = document.createElement('a');
+        a.href = '#' + header.id;
+        a.textContent = header.textContent;
+        
+        li.appendChild(a);
+        list.appendChild(li);
+      });
+      tocContainer.appendChild(list);
+      
+      // 如果有目录内容，显示容器（CSS里默认可能是隐藏的或者为了样式需要）
+      document.querySelector('.toc-container').style.display = 'block';
+    } else {
+      // 如果没有标题，隐藏目录容器
+      document.querySelector('.toc-container').style.display = 'none';
+    }
+  });
+</script>

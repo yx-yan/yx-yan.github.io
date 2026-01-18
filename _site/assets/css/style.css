@@ -131,3 +131,42 @@ html[data-theme="dark"] .icon-dark { color: #f59e0b; /* 温暖的橙黄色 */ tr
 
 /* 搜索结果卡片微调 */
 .search-result-card { padding: 20px 25px; /* 比首页卡片稍微紧凑一点 */ }
+
+/* ========================================= 📝 文章详情页样式 (Post Layout) ========================================= */
+/* 1. 文章头部样式 */
+.post-header { margin-bottom: 40px; text-align: center; /* 标题居中，更有仪式感 */ padding-bottom: 20px; border-bottom: 1px solid var(--border-color); }
+
+.post-title { font-size: 2.5em; /* 巨大标题 */ font-family: var(--heading-font); font-weight: 900; margin-bottom: 15px; line-height: 1.2; }
+
+.post-meta { color: var(--text-muted); font-size: 0.95em; font-family: var(--body-font); }
+
+.post-meta span { margin: 0 10px; }
+
+.tag { background-color: rgba(0, 0, 0, 0.05); padding: 3px 8px; border-radius: 4px; font-size: 0.85em; }
+
+/* 2. 目录 (TOC) 样式 - 桌面端悬浮设计 */
+.toc-container { display: none; /* JS 检测到标题后会改为 block */ background-color: var(--card-bg); border: 1px solid var(--border-color); border-radius: 8px; padding: 20px; margin-bottom: 40px; }
+
+.toc-title { font-weight: 700; margin-bottom: 10px; font-family: var(--heading-font); font-size: 1.1em; }
+
+#toc ul { list-style: none; padding-left: 0; margin: 0; }
+
+#toc li { margin-bottom: 8px; }
+
+#toc a { color: var(--text-muted); font-size: 0.95em; display: block; line-height: 1.4; transition: color 0.2s; }
+
+#toc a:hover { color: var(--link-color); text-decoration: underline; }
+
+/* H2 和 H3 的缩进层级 */
+.toc-h2 { font-weight: 600; }
+
+.toc-h3 { padding-left: 15px; font-size: 0.9em; }
+
+/* 3. 桌面端：TOC 悬浮在右侧 (仿 Lil'Log) */
+@media screen and (min-width: 1200px) { .post-content { position: relative; max-width: 840px; /* 保持正文宽度舒适 */ margin: 0 auto; }
+  .toc-container { position: fixed; top: 120px; /* 距离顶部导航栏的高度 */ right: 20px; /* 贴在屏幕右侧 */ width: 240px; /* 固定宽度 */ max-height: 70vh; /* 防止太长超出屏幕 */ overflow-y: auto; /* 内容过长可滚动 */ border-left: 4px solid var(--link-color); /* 左侧加个彩色条装饰 */ border-top: none; border-right: none; border-bottom: none; background: transparent; /* 透明背景更清爽 */ }
+  /* 在超宽屏幕上，确保正文不被 TOC 遮挡 (可选，如果觉得挤可以调整) */ }
+/* 4. 文章正文排版优化 */
+.post-body h2 { margin-top: 1.5em; padding-bottom: 10px; border-bottom: 1px solid var(--border-color); /* 给 H2 加下划线，区分段落 */ }
+
+.post-body p { margin-bottom: 1.5em; font-size: 1.1em; /* 正文字体稍微大一点点，阅读体验更好 */ }
