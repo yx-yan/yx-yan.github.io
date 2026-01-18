@@ -1,0 +1,20 @@
+title: YXY
+email: your-email@domain.com
+description: >- # 用于SEO
+  Exploring AI, Prompting, and Data. Personal blog of YXY.
+baseurl: ""
+url: "" 
+
+# 社交链接配置
+social:
+  github: yourusername
+  twitter: yourusername
+  linkedin: yourusername
+  instagram: yourusername
+
+# 设置
+markdown: kramdown
+theme: minima # 我们会覆盖它的样式，但保留基础功能
+plugins:
+  - jekyll-seo-tag
+  - jekyll-feed
