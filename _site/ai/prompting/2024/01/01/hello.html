@@ -1,64 +1,27 @@
-<!DOCTYPE html>
-<html lang="en" data-theme="light">
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  
-  <title>Hello World: The Art of Prompt Engineering | YXY</title>
-  
-  <link rel="stylesheet" href="/assets/css/style.css?v=1768748657">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  
-  <script>
-    window.MathJax = {
-      tex: {
-        inlineMath: [['$', '$'], ['\\(', '\\)']],
-        displayMath: [['$$', '$$'], ['\\[', '\\]']],
-        processEscapes: true
-      },
-      svg: {
-        fontCache: 'global'
-      }
-    };
-  </script>
-  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-</head>
+<article class="post-content wrapper">
+  <header class="post-header">
+    <h1 class="post-title">Hello World: The Art of Prompt Engineering</h1>
+    <div class="post-meta">
+      <span class="post-date"><i class="fas fa-calendar-alt"></i> January 01, 2024</span>
+      <span class="post-tags">
+        
+          <span class="tag"><i class="fas fa-tag"></i> LLM</span>
+        
+          <span class="tag"><i class="fas fa-tag"></i> Data</span>
+        
+          <span class="tag"><i class="fas fa-tag"></i> Introduction</span>
+        
+      </span>
+    </div>
+  </header>
 
-<body>
-
-  <header class="site-header">
-  <div class="wrapper header-wrapper">
-    <a class="site-title" href="/">YXY</a>
-
-    <nav class="site-nav">
-      <a href="/about">About</a>
-      <a href="/search">Search</a>
-      
-      <div class="social-links" style="display: flex; gap: 15px; margin-left: 10px; margin-right: 10px;">
-        <a href="https://github.com/yx-yan/" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
-        <a href="https://www.linkedin.com/in/yuxuan-yan-669b36385/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-        <a href="https://x.com/yuxuanyan167126/" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-        <a href="https://www.instagram.com/yuxuan_yan3/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-      </div>
-
-      <div class="theme-switch-wrapper">
-        <i class="fas fa-sun theme-icon icon-light"></i>
-
-        <label class="theme-switch" for="checkbox">
-          <input type="checkbox" id="checkbox" />
-          <div class="slider round"></div>
-        </label>
-
-        <i class="fas fa-moon theme-icon icon-dark"></i>
-      </div>
-    </nav>
+  <div class="toc-container">
+    <div class="toc-title">Table of Contents</div>
+    <div id="toc"></div>
   </div>
-</header>
 
-  <main class="page-content" aria-label="Content">
-    <div class="wrapper">
-      <h2 id="introduction">Introduction</h2>
+  <div class="post-body">
+    <h2 id="introduction">Introduction</h2>
 
 <p>Welcome to <strong>YXY</strong>. This is my first post exploring the intersection of Artificial Intelligence, Data Science, and the subtle art of Prompt Engineering.</p>
 
@@ -113,44 +76,39 @@ import openai</p>
 return response.choices[0].message.content
 </code></pre></div></div>
 
-    </div>
-  </main>
+  </div>
+</article>
 
-  <footer class="site-footer">
-    <div class="wrapper">
-      <p>
-        © 2026 YXY. 
-        <br>Based on <a href="https://lilianweng.github.io/" target="_blank">Lil'Log</a> style. Powered by Jekyll.
-      </p>
-    </div>
-  </footer>
-
-  <script>
-    const toggleSwitch = document.querySelector('.theme-switch input[type="checkbox"]');
-    const currentTheme = localStorage.getItem('theme');
-    // 默认检查系统偏好
-    const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
-
-    if (currentTheme) {
-        document.documentElement.setAttribute('data-theme', currentTheme);
-        if (currentTheme === 'dark') { toggleSwitch.checked = true; }
-    } else if (prefersDarkScheme.matches) {
-        // 如果用户没有设置过，且系统是深色，则自动设为深色
-        document.documentElement.setAttribute('data-theme', 'dark');
-        toggleSwitch.checked = true;
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const tocContainer = document.getElementById('toc');
+    const headers = document.querySelectorAll('.post-body h2, .post-body h3');
+    
+    if (headers.length > 0) {
+      const list = document.createElement('ul');
+      headers.forEach(header => {
+        // 为每个标题生成唯一 ID，供跳转使用
+        if (!header.id) {
+          header.id = header.textContent.trim().toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]/g, '');
+        }
+        
+        const li = document.createElement('li');
+        li.className = 'toc-' + header.tagName.toLowerCase(); // toc-h2 or toc-h3
+        
+        const a = document.createElement('a');
+        a.href = '#' + header.id;
+        a.textContent = header.textContent;
+        
+        li.appendChild(a);
+        list.appendChild(li);
+      });
+      tocContainer.appendChild(list);
+      
+      // 如果有目录内容，显示容器（CSS里默认可能是隐藏的或者为了样式需要）
+      document.querySelector('.toc-container').style.display = 'block';
+    } else {
+      // 如果没有标题，隐藏目录容器
+      document.querySelector('.toc-container').style.display = 'none';
     }
-
-    function switchTheme(e) {
-        if (e.target.checked) {
-            document.documentElement.setAttribute('data-theme', 'dark');
-            localStorage.setItem('theme', 'dark');
-        } else {
-            document.documentElement.setAttribute('data-theme', 'light');
-            localStorage.setItem('theme', 'light');
-        }    
-    }
-    toggleSwitch.addEventListener('change', switchTheme, false);
-  </script>
-
-</body>
-</html>
+  });
+</script>
