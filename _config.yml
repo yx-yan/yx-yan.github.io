@@ -1,20 +1,20 @@
-title: YXY
-email: cainiao314@gmial.com
-description: >- # 用于SEO
+title: "💠 YuXuan Yan | YXY"  # Updated with emoji and quotes for safety
+email: cainiao314@gmail.com  # Fixed typo: gmial -> gmail
+description: >- # Used for SEO
   Exploring AI, Prompting, and Data. Personal blog of YXY.
 baseurl: ""
 url: "" 
 
-# 社交链接配置
+# Social Link Configuration
 social:
   github: yourusername
   twitter: yourusername
   linkedin: yourusername
   instagram: yourusername
 
-# 设置
+# Settings
 markdown: kramdown
-theme: minima # 我们会覆盖它的样式，但保留基础功能
+theme: minima # We will override styles but keep basic functions
 plugins:
   - jekyll-seo-tag
   - jekyll-feed
