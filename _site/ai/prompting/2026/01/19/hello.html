@@ -26,11 +26,11 @@
   
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Merriweather:wght@700;900&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="/assets/css/style.css?v=1768828231">
+  <link rel="stylesheet" href="/assets/css/style.css?v=1768829192">
   
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-  <link rel="stylesheet" href="/assets/css/style.css?v=1768828231">
+  <link rel="stylesheet" href="/assets/css/style.css?v=1768829192">
   
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -120,31 +120,6 @@
 </ul>
 
 <p>This mechanism allows the model to “focus” on relevant parts of your input sequence when generating the output.</p>
-
-<h2 id="structured-prompting-example">Structured Prompting Example</h2>
-
-<p>To get better results from models like GPT-4, we often use structured formats (like JSON or Markdown) in our prompts. Here is a Python example of how you might structure a system message:</p>
-
-<p>```python
-import openai</p>
-
-<p>def get_response(user_input):
-    system_prompt = “””
-    You are an expert data scientist.
-    Please answer the user’s question with:
-    1. A brief theoretical explanation.
-    2. A Python code snippet.
-    “””</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>response = openai.ChatCompletion.create(
-    model="gpt-4",
-    messages=[
-        {"role": "system", "content": system_prompt},
-        {"role": "user", "content": user_input}
-    ]
-)
-return response.choices[0].message.content
-</code></pre></div></div>
 
   </div>
 </article>
