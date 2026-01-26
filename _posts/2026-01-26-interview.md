@@ -632,7 +632,7 @@ $$
 \begin{aligned}
 i_t = \sigma(W_i \cdot [h_{t-1}, x_t] + b_i) \\
 f_t = \sigma(W_f \cdot [h_{t-1}, x_t] + b_f)
-\end{aligned}
+   
 $$
 
 - **Candidate Values**: This is the addition to the state that is computed, but not used yet. The candidate value is computed similarly to the cell state, but using a **$\tanh$** activation function.
