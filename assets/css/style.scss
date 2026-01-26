@@ -650,3 +650,33 @@ pre code {
 .highlight .nt {
   color: #e06c75;
 }
+
+/* =========================================
+   🚑 紧急修复：深色模式代码块“模糊横条”问题
+   ========================================= */
+
+/* 强制覆盖：在深色模式下，代码块内部不应该有背景色 */
+[data-theme="dark"] pre code {
+  background-color: transparent !important; /* 去掉灰条 */
+  color: inherit !important;                /* 去掉强制的粉色字，使用语法高亮颜色 */
+  padding: 0;
+  border-radius: 0;
+}
+
+/* 确保语法高亮在深色模式下依然清晰 */
+[data-theme="dark"] .highlight .k, 
+[data-theme="dark"] .highlight .kd, 
+[data-theme="dark"] .highlight .kp {
+  color: #c678dd !important; /* 关键字（紫色）保持亮度 */
+}
+
+[data-theme="dark"] .highlight .s, 
+[data-theme="dark"] .highlight .s1,
+[data-theme="dark"] .highlight .s2 {
+  color: #98c379 !important; /* 字符串（绿色）保持亮度 */
+}
+
+[data-theme="dark"] .highlight .c, 
+[data-theme="dark"] .highlight .c1 {
+  color: #7f848e !important; /* 注释调亮一点，防止太暗看不清 */
+}
