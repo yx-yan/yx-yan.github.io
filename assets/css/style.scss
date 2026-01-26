@@ -559,3 +559,94 @@ input:checked + .slider:before { transform: translateX(20px); }
 [data-theme="dark"] .search-tag:hover {
   color: #121212; /* 深色模式下，背景变亮绿，文字变黑对比度更高 */
 }
+
+
+
+/* =========================================
+   💻 代码块美化 (Code Highlighting) - VS Code 风格
+   ========================================= */
+
+/* 1. 行内代码 (比如 `npm install`) */
+code {
+  font-family: "JetBrains Mono", "Fira Code", Consolas, Monaco, "Andale Mono", monospace;
+  font-size: 0.85em;
+  padding: 2px 6px;
+  border-radius: 4px;
+  background-color: rgba(0, 0, 0, 0.08); /* 浅灰底 */
+  color: #c62828; /* 红色字，显眼 */
+}
+
+/* 深色模式下的行内代码 */
+[data-theme="dark"] code {
+  background-color: rgba(255, 255, 255, 0.15);
+  color: #ff8a80;
+}
+
+/* 2. 代码块容器 (``` ... ```) */
+pre, figure.highlight {
+  background-color: #282c34; /* VS Code 经典的深灰色背景 */
+  color: #abb2bf;            /* 默认文字颜色 */
+  padding: 20px;
+  border-radius: 8px;        /* 圆角 */
+  overflow-x: auto;          /* 代码太长时允许横向滚动 */
+  margin: 1.5em 0;
+  border: 1px solid rgba(0,0,0,0.1);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  line-height: 1.6;
+}
+
+/* 这是一个坑：Jekyll 有时会把 code 包在 pre 里，需要重置行内样式 */
+pre code {
+  background-color: transparent;
+  color: inherit;
+  padding: 0;
+  border-radius: 0;
+  font-size: 0.9em; /* 代码块字体稍微小一点，更精致 */
+}
+
+/* =========================================
+   🎨 语法高亮颜色 (Syntax Colors)
+   这里手动复刻了 VS Code 的配色方案
+   ========================================= */
+
+/* 注释 (Comment) - 灰色 */
+.highlight .c, .highlight .cm, .highlight .cp, .highlight .c1, .highlight .cs {
+  color: #5c6370;
+  font-style: italic;
+}
+
+/* 关键字 (Keyword) - 紫色 */
+.highlight .k, .highlight .kc, .highlight .kd, .highlight .kp, .highlight .kr, .highlight .kt {
+  color: #c678dd;
+  font-weight: bold;
+}
+
+/* 变量与属性 (Name/Attribute) - 红色/橙色 */
+.highlight .n, .highlight .na, .highlight .nb, .highlight .bp {
+  color: #e06c75; 
+}
+
+/* 字符串 (String) - 绿色 */
+.highlight .s, .highlight .sb, .highlight .sc, .highlight .sd, .highlight .s2, .highlight .sh, .highlight .sx, .highlight .s1 {
+  color: #98c379;
+}
+
+/* 函数名 (Function) - 蓝色 */
+.highlight .nf, .highlight .fm {
+  color: #61afef;
+}
+
+/* 数字 (Number) - 橙色 */
+.highlight .m, .highlight .mf, .highlight .mh, .highlight .mi, .highlight .mo, .highlight .il {
+  color: #d19a66;
+}
+
+/* 操作符 (Operator) - 青色 */
+.highlight .o, .highlight .ow {
+  color: #56b6c2;
+}
+
+/* 标签 (Tag) - 红色 */
+.highlight .nt {
+  color: #e06c75;
+}
