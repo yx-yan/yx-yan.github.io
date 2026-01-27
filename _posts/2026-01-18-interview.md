@@ -1,10 +1,10 @@
 ---
 layout: post
 title: "80 Essential Deep Learning Interview Questions (41-60)"
-date: 2026-01-26 12:00:00 +0800
+date: 2026-01-18 12:00:00 +0800
 categories: [Interview, Deep Learning]
 tags: [Interview, Deep Learning]
-description: "A deep dive into the basics of prompt engineering, mathematical foundations of LLMs, and setting up a data-driven mindset."
+description: "80 Essential Questions to form a basic understanding of Deep Learning."
 ---
 
 
