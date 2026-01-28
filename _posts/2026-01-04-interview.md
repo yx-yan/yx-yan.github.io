@@ -9,7 +9,7 @@ description: "80 Essential Questions to form a basic understanding of Deep Learn
 
 ## 1. Define _deep learning_ and how it differs from other _machine learning_ approaches.
 
-**Deep Learning** represents a subset of machine learning that emphasizes multi-layered artificial neural networks. These deep neural networks (DNNs) have the unparalleled ability to learn from unstructured or unlabeled data.
+**Deep Learning** represents a subset of machine learning that emphasizes multi-layered artificial neural networks. These deep neural networks (DNNs) have the unparalleled ability to learn from **unstructured** or **unlabeled** data.
 
 ### Key Characteristics
 
